@@ -27,11 +27,12 @@
 - 每次会话启动时运行 `.claude/hooks/session-start.sh`：检查 JDK 17+，把 Android SDK（cmdline-tools、platform-tools、`platforms;android-36`、`build-tools;36.0.0`）装到 `~/android-sdk`，并设置 `ANDROID_HOME`。框架梳理阶段定下 compileSdk 后，同步修改脚本顶部的版本号。
 - 容器自带 JDK 21 和 Gradle 8.14.3（`/opt/gradle`）。项目骨架建立后统一使用 `./gradlew`。
 - Android SDK 和 Google Maven 仓库（AGP、AndroidX）都从 `dl.google.com` 下载。云端环境的网络策略必须允许这个域名，否则无法构建；不要改用第三方镜像绕过。
+- Maven Central 偶尔对并发下载返回 429，重跑一次即可（可加 `--max-workers=2`）。
 - 容器没有 `/dev/kvm`，跑不了模拟器。云端只能跑 JVM 单元测试（可配合 Robolectric），界面和真机验证在手机上做。
 
 ### 本地
 
-- Android Studio 打开项目，真机通过 USB 或无线调试运行。
+- 用本机已有的 Android Studio 和 SDK 打开项目，真机通过 USB 或无线调试运行。启动脚本只在云端执行，不会动本机环境。
 
 ## 常用命令（项目骨架建立后）
 
