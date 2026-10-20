@@ -1,0 +1,26 @@
+# Gradle
+.gradle/
+build/
+
+# 本机配置（sdk.dir 等）
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Kotlin
+.kotlin/
+
+# 签名文件不入库
+*.jks
+*.keystore
+
+# 系统文件
+.DS_Store
+
+# Claude Code 个人本地设置
+.claude/settings.local.json
